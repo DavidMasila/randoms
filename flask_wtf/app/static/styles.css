@@ -3,5 +3,13 @@ input[type="radio"]{
 }
 
 .no-bullet {
-    list-style: none;
+    list-style-type: none;
+}
+*{
+    box-sizing: border-box;
+}
+div .top-G {
+    margin: 0 auto;
+    display: inline-flexbox;
+    text-align: center;
 }

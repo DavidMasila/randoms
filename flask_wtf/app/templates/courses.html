@@ -7,17 +7,17 @@
     <div class="row">
         <div class="col">
             {% for course in courses_list %}
-            <div class="card mx-auto" style="max-width: 300px;">
-                <div class="card-body">
+            <div class="card mx-auto" style="display: inline-block;">
+                <div class="card-body" style="max-width: 300px;">
                     <h4 class="card-title">{{ course.title }}</h4>
-                    <p class="card-text">{{ course.description }}</p>
+                    <p class="card-text" style="height: 50px; overflow: hidden;">{{ course.description }}</p>
                     <div class="card">
                         <p class="card-title">Course available: <span style="font-weight: 500;"> {{ course.available
                                 }}</span></p>
                                 <hr>
                         <p class="card-body">Course Level: {{ course.level }}</p>
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer" style="margin-bottom: 5px;">
                         <p>Course Price: <span style="font-weight: 500"> ${{ course.price }}</span></p>
                     </div>
                 </div>

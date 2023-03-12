@@ -12,5 +12,5 @@ class CreateForms(FlaskForm):
     price = IntegerField('Price', validators=[InputRequired()])
     level = RadioField('Level', validators=[InputRequired()], choices=[
                        'Beginner', 'Intermediate', 'advanced'], render_kw={'class': 'no-bullet'})
-    available = BooleanField('Available', default='checked')
+    available = BooleanField('Available', default='checked' )
     add = SubmitField('Add')
