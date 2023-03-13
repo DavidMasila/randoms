@@ -1,0 +1,43 @@
+.title {
+    margin: 5px;
+    text-align: center;
+}
+
+.content {
+    margin: 5px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.student {
+    flex: 20%;
+    padding: 10px;
+    margin: 5px;
+    background-color: #f3f3f3;
+    inline-size: 100%;
+}
+
+.bio {
+    padding: 10px;
+    margin: 5px;
+    background-color: #ffffff;
+    color: #004835;
+}
+
+.name a {
+    color: #00a36f;
+    text-decoration: none;
+}
+
+nav a {
+    color: #0c31d6;
+    font-size: 2em;
+    margin-left: 50px;
+    text-decoration: none;
+}
+
+nav a:hover{
+    color: #b80817;
+}
