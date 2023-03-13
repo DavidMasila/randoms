@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <span class="title">
+        <h1 style="text-transform: capitalize;">{% block title %} {{ student.firstname }} {{ student.lastname }}{% endblock %}</h1>
+    </span>
+    <div class="content">
+            <div class="student">
+                <p>ID: <b>{{ student.id }}</b></p>
+                <p>Email: {{ student.email }}</p>
+                <p>Age: {{ student.age }} years old.</p>
+                <p>Joined: {{ student.created_at }}</p>
+                <div class="bio">
+                    <h4>Bio</h4>
+                    <p>{{ student.bio }}</p>
+                </div>
+            </div>
+    </div>
+{% endblock %}
