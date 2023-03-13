@@ -8,4 +8,4 @@ class Student(FlaskForm):
     email = EmailField("Email", validators=[InputRequired(), Length(min=10,max=100)])
     age = IntegerField("Age", validators=[InputRequired()])
     bio = TextAreaField("Bio", validators=[InputRequired()])
-    add = SubmitField('Add Student', render_kw={'class':'btn btn-primary mt-3'})
+    add = SubmitField('Submit', render_kw={'class':'btn btn-primary mt-3'})

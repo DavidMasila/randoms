@@ -2,7 +2,13 @@
     margin: 5px;
     text-align: center;
 }
-
+.flashes {
+    text-align: center;
+    list-style: none;
+    background-color: #eb6f7a;
+    display: inline-block;
+    width: 100%;
+}
 .content {
     margin: 5px;
     width: 100%;
@@ -40,4 +46,20 @@ nav a {
 
 nav a:hover{
     color: #b80817;
+}
+
+.ind-button {
+    padding: 5px;
+    display: inline-block;
+}
+
+.ind-button a {
+    text-decoration: none;
+    color: rgb(73, 72, 72);
+    margin-left: 90px;
+}
+
+.ind-button a:hover {
+    color: rgb(58, 2, 2);
+    text-decoration: underline;
 }

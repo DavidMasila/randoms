@@ -27,13 +27,13 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1 class="title">{% block title %} Add Student {% endblock %}</h1>
-            <form action="{{ url_for('create')}}" method="POST">
+            <h1 class="title">{% block title %} Edit {{ student.firstname}}'s profile {% endblock %}</h1>
+            <form action="{{ url_for('edit', student_id = student.id)}}" method="POST">
                 {{ form.csrf_token }}
 
                 <div class="form-group mb-2">
                     {{ form.firstname.label(class_='mb-1')}}
-                    {{ form.firstname(class_='form-control') }}
+                    {{ form.firstname(class_='form-control', placeholder= student.firstname ) }}
                 </div>
                 {% if form.firstname.errors %}
                 <ul class="errors">
@@ -45,7 +45,7 @@
 
                 <div class="form-goup mb-2">
                     {{ form.lastname.label(class_='mb-1')}}
-                    {{ form.lastname(class_='form-control')}}
+                    {{ form.lastname(class_='form-control', placeholder=student.lastname)}}
                 </div>
 
                 {% if form.lastname.errors%}
@@ -58,7 +58,7 @@
 
                 <div class="form-group mb-2">
                     {{ form.email.label(class_='mb-1')}}
-                    {{ form.email(class_='form-control')}}
+                    {{ form.email(class_='form-control', placeholder=student.email)}}
                 </div>
 
                 {% if form.email.errors%}
@@ -71,7 +71,7 @@
 
                 <div class="form-group mb-2">
                     {{ form.age.label(class_='mb-1')}}
-                    {{ form.age(class_='form-control')}}
+                    {{ form.age(class_='form-control', placeholder=student.age)}}
                 </div>
 
                 {% if form.age.errors%}
@@ -84,7 +84,7 @@
 
                 <div class="form-group mb-2">
                     {{ form.bio.label(class_='mb-1')}}
-                    {{ form.bio(rows=5,class_='form-control')}}
+                    {{ form.bio(rows=5,class_='form-control', placeholder=student.bio)}}
                 </div>
 
                 {% if form.bio.errors%}
