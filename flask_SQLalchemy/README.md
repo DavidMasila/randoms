@@ -28,4 +28,6 @@ db.session.query(Students).filter(Students.firstname == 'john').first() -> Use e
 user1[0].firstname
 >> Will give you the value in firstname from db -> Same criterion for the rest. 
 
+## Screenshots
 
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
