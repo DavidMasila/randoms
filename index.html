@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .comment-section {
+            position: relative;
+            width: 100%;
+        }
+
+        #comment-input-container {
+            display: none;
+            position: absolute;
+            top: 50px;
+            /* adjust as needed */
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        #comment-input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        #submit-comment-btn {
+            background-color: #1e90ff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        #add-comment-btn {
+            background-color: #1e90ff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        #add-comment-btn:focus+#comment-input-container {
+            display: block;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="comment-section">
+        <button id="add-comment-btn">Add Comment</button>
+        <div id="comment-input-container">
+            <input type="text" id="comment-input" placeholder="Type your comment here...">
+            <button id="submit-comment-btn">Submit</button>
+        </div>
+    </div>
+    <script>
+        function toggleCommentInput() {
+            var commentInputContainer = document.getElementById("comment-input-container");
+            if (commentInputContainer.style.display === "none") {
+                commentInputContainer.style.display = "block";
+            } else {
+                commentInputContainer.style.display = "none";
+            }
+        }
+
+    </script>
+</body>
+
+</html>
