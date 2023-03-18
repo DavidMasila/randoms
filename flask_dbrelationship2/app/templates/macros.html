@@ -1,0 +1,49 @@
+{% macro display_tags(post) %}
+<div class="tag">
+    <p>
+    <h6>Tags:</h6>
+    {% for tag in post.tags %}
+    <a class="delete-link" href="#" style="text-decoration: none; color: #dd5b5b">
+        {{ tag.tag_name }}
+    </a>
+    |
+    {% endfor %}
+    </p>
+</div>
+
+{% endmacro %}
+
+{% macro add_tag(post) %}
+
+<div class="tag">
+    <p>
+    <h6>Tags:</h6>
+    {% for tag in post.tags %}
+    <a class="delete-link" href="#" style="text-decoration: none; color: #dd5b5b">
+        {{ tag.tag_name }}
+    </a>
+    |
+    {% endfor %}
+    <button id="add-tag" class="add-tag" style="font-size: xx-small; border: 1px solid red;">Add tag</button>
+        <div id='tag-form' class="add-tag-form" style="display: none;">
+            <form class="add-tag-form" action="{{url_for('add_tag', post_id=post.id)}}" method="POST">
+                <div class="input-group mt-3">
+                    <input type="text" class="form-control" placeholder="Add tag" name="tag">
+                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Submit</button>
+                </div>
+            </form>
+        </div>
+    </p>
+</div>
+
+{% block script %}
+<script>
+    const addAlert = document.getElementById('add-tag')
+    const tagForm = document.getElementById('tag-form')
+    addAlert.addEventListener('click', function () {
+        tagForm.style.display = 'block';
+    })
+</script>
+{% endblock %}
+
+{% endmacro %}

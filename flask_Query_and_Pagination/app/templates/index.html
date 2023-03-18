@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="title">{% block title %} Employees {% endblock %}</h1>
+    <div class="content">
+        {% for employee in employees %}
+            <div class="employee">
+                <p><b>#{{ employee.id }}</b></p>
+                <b>
+                    <p class="name">{{ employee.firstname }} {{ employee.lastname }}</p>
+                </b>
+                <p>{{ employee.email }}</p>
+                <p>{{ employee.age }} years old.</p>
+                <p>Hired: {{ employee.hire_date }}</p>
+                {% if employee.active %}
+                    <p><i>(Active)</i></p>
+                {% else %}
+                    <p><i>(Out of Office)</i></p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

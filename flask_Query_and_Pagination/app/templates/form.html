@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <h1 style="text-align: center;" class="mb-4">{% block title %} Add Employee {% endblock %}</h1>
+            <form action="{{url_for('add_employee')}}" method="POST">
+                {{ form.csrf_token }}
+                
+                <div class="form-group mb-2">
+                    {{ form.firstname.label(class_='mb-1')}}
+                    {{ form.firstname(class_='form-control')}}
+                </div>
+                {% if form.firstname.errors %}
+                    <ul>
+                        {% for error in form.firstname.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                <div class="form-group mb-2">
+                    {{ form.lastname.label(class_='mb-1')}}
+                    {{ form.lastname(class_='form-control')}}
+                </div>
+                {% if form.lastname.errors %}
+                    <ul>
+                        {% for error in form.lastname.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                <div class="form-group mb-2">
+                    {{ form.email.label(class_='mb-1')}}
+                    {{ form.email(class_='form-control')}}
+                </div>
+                {% if form.email.errors %}
+                    <ul>
+                        {% for error in form.email.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                <div class="form-group mb-2">
+                    {{ form.age.label(class_='mb-1')}}
+                    {{ form.age(class_='form-control')}}
+                </div>
+                {% if form.age.errors %}
+                    <ul>
+                        {% for error in form.age.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+
+                <div class="form-group mb-2">
+                    {{ form.hire_date.label(class_='mb-1')}}
+                    {{ form.hire_date(class_='form-control')}}
+                </div>
+                {% if form.hire_date.errors %}
+                    <ul>
+                        {% for error in form.hire_date.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+
+                <div class="form-group mb-2">
+                    {{ form.active.label(class_='mb-1')}}
+                    {{ form.active}}
+                </div>
+                {% if form.active.errors %}
+                    <ul>
+                        {% for error in form.active.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                {{ form.submit(class_='btn btn-primary')}}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

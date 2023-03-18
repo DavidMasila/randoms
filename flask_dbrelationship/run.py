@@ -1,5 +1,5 @@
 from app import app
-from app.models import db, migrate, Comments, Post
+from app.models import db, migrate
 
 
 if __name__ == '__main__':
