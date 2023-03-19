@@ -25,6 +25,7 @@ class Employee(db.Model):
 
 
 with app.app_context():
+    from datetime import date
     db.create_all()
     migrate.init_app(app, db)
     db.session.commit()

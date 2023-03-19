@@ -1,23 +1,48 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 class="title">{% block title %} Employees {% endblock %}</h1>
-    <div class="content">
-        {% for employee in employees %}
-            <div class="employee">
-                <p><b>#{{ employee.id }}</b></p>
-                <b>
-                    <p class="name">{{ employee.firstname }} {{ employee.lastname }}</p>
-                </b>
-                <p>{{ employee.email }}</p>
-                <p>{{ employee.age }} years old.</p>
-                <p>Hired: {{ employee.hire_date }}</p>
-                {% if employee.active %}
-                    <p><i>(Active)</i></p>
-                {% else %}
-                    <p><i>(Out of Office)</i></p>
-                {% endif %}
-            </div>
-        {% endfor %}
+<h1 class="title">{% block title %} Employees {% endblock %}</h1>
+<div class="content">
+    {% for employee in employees.items %}
+    <div class="employee">
+        <p><b>#{{ employee.id }}</b></p>
+        <b>
+            <p class="name">{{ employee.firstname }} {{ employee.lastname }}</p>
+        </b>
+        <p>{{ employee.email }}</p>
+        <p>{{ employee.age }} years old.</p>
+        <p>Hired: {{ employee.hire_date }}</p>
+        {% if employee.active %}
+        <p><i>(Active)</i></p>
+        {% else %}
+        <p><i>(Out of Office)</i></p>
+        {% endif %}
     </div>
+    {% endfor %}
+</div>
+<div class="pagination pagination-sm">
+    {% if employees.has_prev %}
+    <span>
+        <a class="page-link" href="{{ url_for('index', page=employees.prev_num )}}">{{ '<<' }}</a>
+    </span>
+    {% endif %}
+
+    {% for number in employees.iter_pages() %}
+    {% if employees.page != number %}
+    <span>
+        <a href="{{ url_for('index', page=number)}}" class="page-link">
+            {{ number }}
+        </a>
+    </span>
+    {% else %}
+    <span class="page-link">{{ number }}</span>
+    {% endif %}
+    {% endfor %}
+
+    {% if employees.has_next %}
+    <span>
+        <a href="{{ url_for('index', page=employees.next_num )}}" class="page-link">{{ '>>' }}</a>
+    </span>
+    {% endif %}
+</div>
 {% endblock %}
