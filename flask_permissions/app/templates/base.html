@@ -24,7 +24,6 @@
                     <li class="nav-item ">
                         <a class="nav-link active" aria-current="page" href="{{ url_for('main.index')}}">Home</a>
                     </li>
-                    {% if current_user.is_admin %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Liquours
@@ -35,7 +34,6 @@
                           <li><a class="dropdown-item" href="#">Beers</a></li>
                         </ul>
                       </li>
-                      {% endif %}
                     {% endif %}
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0  ms-auto">

@@ -1,10 +1,10 @@
-from flask_login import LoginManager, current_user
-from flask import Flask
+from flask_login import LoginManager
+from flask import Flask, redirect, url_for
 from config import Config
-from extensions import db, migrate, admin, principal, admin_role
+from extensions import db, migrate, admin, principal, admin_role, admin_permission, user_permission
 from .controller import Controller
-from flask_principal import identity_loaded, UserNeed
-
+from flask_principal import identity_changed, RoleNeed, Permission, identity_loaded, PermissionDenied
+from flask_login import current_user
 
 def create_app(config_class=Config):
     app = Flask(__name__)
@@ -18,7 +18,7 @@ def create_app(config_class=Config):
 
         # initialize admin
         admin.init_app(app)
-        admin.name = 'Control Panel'
+        admin.name = 'Scorprog Admin'
         admin.template_mode = 'bootstrap5.2'
         admin.add_view(Controller(Seller, db.session))
 
@@ -43,19 +43,19 @@ def create_app(config_class=Config):
         from .main import main as main_bp
         app.register_blueprint(main_bp)
 
-        db.create_all()
 
+        #User Information Providers. 
         @identity_loaded.connect_via(app)
         def on_identity_loaded(sender, identity):
-            # set the identity user object
-            identity.user = current_user
-            # add the user's id to the identity's UserNeed
-            if hasattr(current_user, 'id'):
-                identity.provides.add(UserNeed(current_user.id))
+            if current_user.is_authenticated and current_user.is_admin:
+                admin_permission = Permission(RoleNeed('admin'))
+                identity.provides.add(RoleNeed('admin'))
+                identity.provides.add(admin_permission)
 
-            # add the admin role is the user is an admin
-            if hasattr(current_user, 'is_admin'):
-                if current_user.is_admin:
-                    identity.provides.add(admin_role)
+        @app.errorhandler(PermissionDenied)
+        def handle_permission_denied(e):
+            return redirect(url_for('auth.login'))
+        
+        db.create_all()
 
         return app
