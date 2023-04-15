@@ -1,21 +1,8 @@
-dict = {
-  "books": [
-    {
-      "title": "To Kill a Mockingbird",
-      "author": "Harper Lee",
-      "published": "1960",
-      "genre": "Southern Gothic",
-      "rating": 4.27
-    },
-    {
-      "title": "1984",
-      "author": "George Orwell",
-      "published": "1949",
-      "genre": "Dystopian",
-      "rating": 4.19
-    }
-  ]
-}
+import pytube
 
+download_loc = "./"
+videourl = input("Enter url: \n")
+video_instance = pytube.YouTube(videourl)
+stream = video_instance.streams.get_highest_resolution()
 
-print(dict.get('books')[0]['title'])
+stream.download()
