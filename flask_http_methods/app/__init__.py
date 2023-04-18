@@ -101,3 +101,4 @@ def delete_member(collection, member):
     
     res = make_response(jsonify({"error":"collection not found in stock"}), 400)
     return res
+
